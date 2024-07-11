@@ -1,4 +1,4 @@
-products = [
+products_data = [
     {
         'code': 'GR1',
         'name': "Green tea",
@@ -19,7 +19,7 @@ products = [
     },
 ]
 
-offers = [
+offers_data = [
     {
         'type': 'get_one_free',
         'nth': 2,
