@@ -1,5 +1,6 @@
 import math
 from collections import defaultdict
+from utils.errors import DuplicateProductError, UnknownItemError
 
 offer_funcs = {
     'get_one_free': lambda num, product, offer : math.ceil(
@@ -21,10 +22,12 @@ class CashRegister:
 
     def __init__(self, products, offers):
         # use dict for O(1) lookup later on
-        self.products = {
-            product.code: product
-            for product in products
-        }
+        self.products = dict()
+        for product in products:
+            if self.products.get(product.code):
+                raise DuplicateProductError(product.code)
+            else:
+                self.products[product.code] = product
         # assuming we can't have two different offers for one product
         self.offers = {
             offer.product: offer for offer in offers
@@ -34,6 +37,8 @@ class CashRegister:
         sum = 0
         cart = defaultdict(int)
         for item in list:
+            if item not in self.products:
+                raise UnknownItemError(item)
             cart[item] += 1
 
         for key, value in cart.items():

@@ -12,4 +12,5 @@ if __name__ == '__main__':
     
     str = input("List of products in the cart: ")
     cart = str.split(" ")
-    print(cash_register.calculate_total_price(cart))
+    total = cash_register.calculate_total_price(cart)
+    print(f'Your total: {total}')

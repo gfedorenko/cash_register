@@ -1,7 +1,9 @@
 import unittest
 from utils.data import products_data, offers_data
+from test_data import duplicate_products_data
 from utils.load_data import read_offers, read_products
 from cash_register.cash_register import CashRegister
+from utils.errors import DuplicateProductError, UnknownItemError
 
 class TestDataLoading(unittest.TestCase):
     def test_reading_products_data(self):
@@ -72,9 +74,22 @@ class TestBasicCashRegister(unittest.TestCase):
             cart_price,
             22.46
         )
+    
+    def test_cash_register_duplicated_item(self):
+        products = read_products(duplicate_products_data)
+        offers = read_offers(offers_data)
+        with self.assertRaises(DuplicateProductError):
+            CashRegister(products, offers)
 
+    def test_cash_register_unknown_item(self):
+        products = read_products(products_data)
+        offers = read_offers(offers_data)
+        cr = CashRegister(products, offers)
 
-
+        cart_list = ['UNK', 'CF1', 'CF1']
+        with self.assertRaises(UnknownItemError):
+            cr.calculate_total_price(cart_list)
+        
 
 
 if __name__ == '__main__':
