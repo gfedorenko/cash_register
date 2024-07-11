@@ -23,12 +23,12 @@ class TestBasicCashRegister(unittest.TestCase):
         products = read_products(products_data)
         offers = []
 
-        basket_list = ['GR1', 'SR1', 'CF1']
+        cart_list = ['GR1', 'SR1', 'CF1']
         cr = CashRegister(products, offers)
     
-        basket_price = cr.calculate_total_price(basket_list)
+        cart_price = cr.calculate_total_price(cart_list)
         self.assertEqual(
-            basket_price,
+            cart_price,
             19.34
         )
 
@@ -37,12 +37,12 @@ class TestBasicCashRegister(unittest.TestCase):
         products = read_products(products_data)
         offers = read_offers(offers_data)
 
-        basket_list = ['GR1', 'GR1']
+        cart_list = ['GR1', 'GR1']
         cr = CashRegister(products, offers)
     
-        basket_price = cr.calculate_total_price(basket_list)
+        cart_price = cr.calculate_total_price(cart_list)
         self.assertEqual(
-            basket_price,
+            cart_price,
             3.11
         )
     
@@ -50,12 +50,12 @@ class TestBasicCashRegister(unittest.TestCase):
         products = read_products(products_data)
         offers = read_offers(offers_data)
 
-        basket_list = ['SR1', 'SR1', 'SR1']
+        cart_list = ['SR1', 'SR1', 'SR1']
         cr = CashRegister(products, offers)
     
-        basket_price = cr.calculate_total_price(basket_list)
+        cart_price = cr.calculate_total_price(cart_list)
         self.assertEqual(
-            basket_price,
+            cart_price,
             13.5
         )
 
@@ -64,12 +64,12 @@ class TestBasicCashRegister(unittest.TestCase):
         products = read_products(products_data)
         offers = read_offers(offers_data)
 
-        basket_list = ['CF1', 'CF1', 'CF1']
+        cart_list = ['CF1', 'CF1', 'CF1']
         cr = CashRegister(products, offers)
     
-        basket_price = cr.calculate_total_price(basket_list)
+        cart_price = cr.calculate_total_price(cart_list)
         self.assertEqual(
-            basket_price,
+            cart_price,
             22.46
         )
 
