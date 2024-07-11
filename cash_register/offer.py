@@ -5,4 +5,4 @@ class Offer:
         self.product = product
         self.nth = nth
         self.discount_amount = discount_amount
-        self.descount_percent = discount_percent
+        self.discount_percent = discount_percent
