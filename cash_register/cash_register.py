@@ -1,6 +1,6 @@
 import math
 from collections import defaultdict
-from utils.errors import DuplicateProductError, UnknownItemError
+from utils.errors import DuplicateProductError, UnknownItemError, UnknownOfferTypeError
 
 offer_funcs = {
     'get_one_free': lambda num, product, offer : math.ceil(
@@ -33,7 +33,7 @@ class CashRegister:
 
         for offer in offers:
             if offer.type not in offer_funcs:
-                raise UnknownItemError(offer.type)
+                raise UnknownOfferTypeError(offer.type)
 
             else:
                 self.offers[offer.product] = offer

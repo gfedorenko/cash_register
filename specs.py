@@ -3,7 +3,7 @@ from utils.data import products_data, offers_data
 from test_data import duplicate_products_data, updated_products_data, updated_offers_data, unknown_offer_data
 from utils.load_data import read_offers, read_products
 from cash_register.cash_register import CashRegister
-from utils.errors import DuplicateProductError, UnknownItemError
+from utils.errors import DuplicateProductError, UnknownItemError, UnknownOfferTypeError
 
 class TestDataLoading(unittest.TestCase):
     def setUp(self):
@@ -86,7 +86,7 @@ class TestBasicCashRegister(unittest.TestCase):
     def test_cash_register_unknown_offer(self):
         offers = read_offers(unknown_offer_data)
 
-        with self.assertRaises(UnknownItemError):
+        with self.assertRaises(UnknownOfferTypeError):
             CashRegister(self.products, offers)
 
 
