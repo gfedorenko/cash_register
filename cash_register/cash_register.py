@@ -4,7 +4,7 @@ from utils.errors import DuplicateProductError, UnknownItemError
 
 offer_funcs = {
     'get_one_free': lambda num, product, offer : math.ceil(
-                num/offer.nth
+                num - (num//offer.nth)
             ) * product.price ,
     'get_discount': lambda num, product, offer  : (
                 num * (product.price - offer.discount_amount)
@@ -23,15 +23,21 @@ class CashRegister:
     def __init__(self, products, offers):
         # use dict for O(1) lookup later on
         self.products = dict()
+        self.offers = dict()
         for product in products:
             if self.products.get(product.code):
                 raise DuplicateProductError(product.code)
             else:
                 self.products[product.code] = product
         # assuming we can't have two different offers for one product
-        self.offers = {
-            offer.product: offer for offer in offers
-        }
+
+        for offer in offers:
+            if offer.type not in offer_funcs:
+                raise UnknownItemError(offer.type)
+
+            else:
+                self.offers[offer.product] = offer
+
 
     def calculate_total_price(self, list):
         sum = 0
