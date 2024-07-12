@@ -3,4 +3,3 @@ class Product:
         self.code = code
         self.name = name
         self.price = price
-        

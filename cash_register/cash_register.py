@@ -3,20 +3,20 @@ from collections import defaultdict
 from utils.errors import DuplicateProductError, UnknownItemError, UnknownOfferTypeError
 
 offer_funcs = {
-    'get_one_free': lambda num, product, offer : math.ceil(
-                num - (num//offer.nth)
-            ) * product.price ,
-    'get_discount': lambda num, product, offer  : (
-                num * (product.price - offer.discount_amount)
-                if num >= offer.nth
-                else num * product.price
-            ),
-    'get_percent_discount': lambda num, product, offer  : (
-                num * product.price * offer.discount_percent
-                if num >= offer.nth
-                else num * product.price
-            )
+    "get_one_free": lambda num, product, offer: math.ceil(num - (num // offer.nth))
+    * product.price,
+    "get_discount": lambda num, product, offer: (
+        num * (product.price - offer.discount_amount)
+        if num >= offer.nth
+        else num * product.price
+    ),
+    "get_percent_discount": lambda num, product, offer: (
+        num * product.price * offer.discount_percent
+        if num >= offer.nth
+        else num * product.price
+    ),
 }
+
 
 class CashRegister:
 
@@ -38,7 +38,6 @@ class CashRegister:
             else:
                 self.offers[offer.product] = offer
 
-
     def calculate_total_price(self, list):
         sum = 0
         cart = defaultdict(int)
@@ -50,10 +49,8 @@ class CashRegister:
         for key, value in cart.items():
             if self.offers.get(key):
                 sum += offer_funcs[self.offers[key].type](
-                    value,
-                    self.products[key],
-                    self.offers[key]
-                    )
+                    value, self.products[key], self.offers[key]
+                )
             else:
                 sum += self.products[key].price * value
         return round(sum, 2)
