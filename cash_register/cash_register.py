@@ -11,7 +11,7 @@ offer_funcs = {
         else num * product.price
     ),
     "get_percent_discount": lambda num, product, offer: (
-        num * product.price * offer.discount_percent
+        num * product.price * offer.after_discount_percent
         if num >= offer.nth
         else num * product.price
     ),

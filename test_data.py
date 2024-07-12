@@ -50,7 +50,7 @@ updated_offers_data = [
         'type': 'get_percent_discount',
         'product': 'CF1',
         'nth': 5,
-        'discount_percent': 0.5,
+        'after_discount_percent': 0.5,
     }
 ]
 unknown_offer_data = [

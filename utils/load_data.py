@@ -19,7 +19,7 @@ def read_offers(offers_data):
                 item["product"],
                 item["nth"],
                 discount_amount=item.get("discount_amount", 0),
-                discount_percent=item.get("discount_percent", 0),
+                after_discount_percent=item.get("after_discount_percent", 0),
             )
         )
 

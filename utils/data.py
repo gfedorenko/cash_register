@@ -35,6 +35,6 @@ offers_data = [
         'type': 'get_percent_discount',
         'product': 'CF1',
         'nth': 3,
-        'discount_percent': 0.66666667,
+        'after_after_discount_percent': 0.66666667,
     }
 ]
