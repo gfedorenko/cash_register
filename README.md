@@ -41,6 +41,21 @@ The application will throw exceptions in the following cases:
 - Unknown offer type: if an offer type not supported by the application is encountered.
 - Duplicated items: if the same item appears more than once in the initial products list.
 
+## Code coverage
+
+
+|Name                             |Stmts  | Miss  |Cover|
+|---------------------------------|-------|-----|----|
+|cash_register/cash_register.py    |  28     | 0 |  100%|
+|cash_register/offer.py            |   7     | 0  | 100%|
+|cash_register/product.py          |   5     | 0  | 100%|
+|specs.py                          |  81     | 0  | 100%|
+|test_data.py                      |   4     | 0  | 100%|
+|utils/data.py                     |   2     | 0  | 100%|
+|utils/errors.py                   |   9     | 0  | 100%|
+|utils/load_data.py                |  12     | 0  | 100%|
+|TOTAL                              |148     | 0   |100%|
+
 ---
 
 Happy Shopping!

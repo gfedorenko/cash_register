@@ -104,7 +104,7 @@ class TestCashRegisterEditedOffers(unittest.TestCase):
         cart_price = cr.calculate_total_price(cart_list)
         self.assertEqual(cart_price, 36)
 
-    def test_cash_register_get_one_free(self):
+    def test_cash_register_updated_offers(self):
         cart_list = ['GR1', 'GR1', 'GR1', 'GR1', 'GR1', 'GR1',
                      'SR1', 'SR1', 'SR1', 'SR1', 'SR1',
                      'CF1', 'CF1', 'CF1', 'CF1', 'CF1', 'CF1', 'CF1']
